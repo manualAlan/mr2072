@@ -1,61 +1,18 @@
-import { PlatformFooter, PlatformHeader } from "./PlatformChrome";
-import { beliefStories } from "./beliefs-content";
-import { getFocusArea } from "./platform-data";
+import Link from "next/link";
+import { CampaignShell } from "../campaign-2072/CampaignChrome";
+import { platformStories } from "../campaign-2072/content";
 
 export default function BeliefPage({ slug }: { slug: string }) {
-  const story = beliefStories[slug];
-  const area = getFocusArea(slug)!;
-  const split = slug === "economy" || slug === "healthcare";
-  return (
-    <div className={`belief-root belief-${slug}`}>
-      <a className="campaign-skip" href="#belief-content">Skip to our beliefs</a>
-      <PlatformHeader />
-      <main>
-        <section className={`belief-hero ${split ? "belief-hero-split" : "belief-hero-wide"}`} aria-labelledby="belief-title">
-          <figure><img src={area.image} alt={area.alt ?? ""} style={{ objectPosition: area.imagePosition }} fetchPriority="high" /></figure>
-          <div className="belief-hero-copy">
-            <p className="campaign-label">{story.label}</p>
-            <h1 id="belief-title">{story.headline.map((line, index) => index === 0 ? <span key={line}>{line}</span> : <em key={line}> {line}</em>)}</h1>
-            <p className="belief-standfirst">{story.standfirst}</p>
-          </div>
-          <a className="belief-scroll" href="#belief-content" aria-label={`Read our beliefs on ${story.label.toLowerCase()}`}>↓</a>
-        </section>
-        <article id="belief-content">
-          <section className="belief-opening campaign-width">
-            <p className="campaign-label">WHAT WE BELIEVE</p>
-            <div><h2>{story.opening}</h2><div className="belief-prose">{story.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div>
-          </section>
-          <section className="belief-statement" aria-label="Our conviction">
-            <p>{story.pullQuote}</p>
-            {slug === "defense" && <img className="belief-airlift" src="/images/belief-airlift.png" alt="Caprican military transport aircraft" loading="lazy" width="1536" height="1024" />}
-          </section>
-          <section className="belief-principles campaign-width" aria-label="The principles behind our policy">
-            {story.principles.map((principle) => <div className="belief-principle" key={principle.title}><h3>{principle.title}</h3><p>{principle.text}</p></div>)}
-          </section>
-          <section className="belief-details campaign-width">
-            <div className="belief-details-intro"><p className="campaign-label">OUR 2068 COMMITMENTS</p><h2>{story.detailTitle}</h2><p>A practical plan, with standards to meet and choices made in public.</p></div>
-            <div className="belief-accordions">{story.details.map((detail, index) => <details key={detail.title} open={index === 0}><summary>{detail.title}<span aria-hidden="true">+</span></summary><p>{detail.text}</p></details>)}</div>
-          </section>
-          <section className="belief-delivery campaign-width" aria-labelledby="belief-delivery-title">
-            <div className="belief-details-intro"><p className="campaign-label">THE DELIVERY TEST</p><h2 id="belief-delivery-title">Judge the promise by the result.</h2><p>What happens first, what is measured, and how it is paid for.</p></div>
-            <dl>
-              <div><dt>First step</dt><dd>{story.delivery.firstStep}</dd></div>
-              <div><dt>Public test</dt><dd>{story.delivery.publicTest}</dd></div>
-              <div><dt>Funding rule</dt><dd>{story.delivery.fundingRule}</dd></div>
-            </dl>
-          </section>
-          <section className="belief-related campaign-width" aria-labelledby="belief-related-title">
-            <p className="campaign-label">CONNECTED PRIORITIES</p>
-            <h2 id="belief-related-title">One plan, working together.</h2>
-            <div className="belief-related-links">{story.related.map((relatedSlug) => {
-              const relatedArea = getFocusArea(relatedSlug)!;
-              return <a className="campaign-text-link" key={relatedSlug} href={`/platform/${relatedSlug}`}>{relatedArea.title}<span aria-hidden="true">↗</span></a>;
-            })}</div>
-          </section>
-          <section className="belief-closing campaign-width"><h2>{story.closing}</h2><a className="campaign-text-link" href="/manifesto/caprica-freedom-to-build-2068.pdf" target="_blank" rel="noreferrer">Read the full manifesto (PDF) <span aria-hidden="true">↗</span></a></section>
-        </article>
-      </main>
-      <PlatformFooter />
-    </div>
-  );
+  const story = platformStories.find(item => item.slug === slug)!;
+  const next = platformStories[(platformStories.indexOf(story) + 1) % platformStories.length];
+  return <CampaignShell className="c72-policy">
+    <header className="c72-page-intro c72-width"><p>{story.title}</p><h1>{story.headline}</h1></header>
+    <figure className="c72-policy-hero c72-width"><img src={story.image} alt={story.alt} style={{objectPosition:story.position}} fetchPriority="high" /></figure>
+    <section className="c72-policy-copy c72-width">
+      <h2>{story.introduction}</h2>
+      <div className="c72-promises">{story.promises.map(promise => <div key={promise.title}><h3>{promise.title}</h3><p>{promise.text}</p></div>)}</div>
+    </section>
+    <figure className="c72-policy-feature c72-width"><img src={story.secondImage} alt={story.secondAlt} loading="lazy" /><figcaption>{story.belief}</figcaption></figure>
+    <nav className="c72-policy-bottom c72-width" aria-label="Explore the platform"><Link href="/platform/">Our platform</Link><Link href={"/platform/" + next.slug + "/"}>{next.title}</Link></nav>
+  </CampaignShell>;
 }

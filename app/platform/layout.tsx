@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "What we believe | Alliance 2068",
+  title: "What we believe | Alliance 2072",
   description: "Freedom, enterprise and a country that works. What the Alliance believes, and how we will put it into practice.",
 };
 

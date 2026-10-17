@@ -33,17 +33,17 @@ function foldCalendarLine(value: string) {
   return folded;
 }
 
-export function eventCalendarHref(event: CalendarEvent) {
-  const date = `2068${months[event.month]}${event.day.padStart(2, "0")}`;
+export function eventCalendarHref(event: CalendarEvent, year = 2068) {
+  const date = `${year}${months[event.month]}${event.day.padStart(2, "0")}`;
   const time = event.time.replace(":", "");
   const description = `${event.description}\nStarts at ${event.time}, local venue time.\nRegistration details will be announced on the campaign events page.`;
   const calendar = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Alliance//Caprica Campaign 2068//EN",
+    `PRODID:-//Alliance//Caprica Campaign ${year}//EN`,
     "CALSCALE:GREGORIAN",
     "BEGIN:VEVENT",
-    `UID:${event.slug}-2068@alliance.caprica`,
+    `UID:${event.slug}-${year}@alliance.caprica`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z")}`,
     `DTSTART:${date}T${time}00`,
     `SUMMARY:${calendarText(event.title)}`,

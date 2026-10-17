@@ -1,17 +1,22 @@
 import { candidates } from "../data";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PlatformFooter, PlatformHeader } from "../platform/PlatformChrome";
+import { CampaignShell } from "../campaign-2072/CampaignChrome";
 
-export const metadata: Metadata = { title: "Our candidates | Alliance 2068", description: "Meet the people standing for the Alliance across Caprica." };
+export const metadata: Metadata = { title: "Our candidates | Alliance 2072", description: "The people standing for the Alliance across Caprica." };
 
-export default function Team(){return <div className="team68-root"><a className="campaign-skip" href="#candidates">Skip to candidates</a><PlatformHeader/><main id="candidates">
- <header className="team68-heading"><h1>Candidates</h1><p>Select a portrait to learn more about each candidate.</p></header>
- <section className="team68-grid" aria-label="Alliance candidates">
-  {candidates.map((candidate)=>{
-   const href=candidate.campaignSite ?? "/2068";
-   const external=href.startsWith("http");
-   return <Link className="team68-card" href={href} id={candidate.slug} key={candidate.name} target={external?"_blank":undefined} rel={external?"noreferrer":undefined} aria-label={`Visit ${candidate.name}'s campaign website`}><figure><img src={candidate.image} alt={candidate.name}/></figure><h2>{candidate.name}</h2></Link>;
-  })}
- </section>
- </main><PlatformFooter copyright="© 2068 Alliance"/></div>}
+export default function Team() {
+  return <CampaignShell className="c72-team">
+    <section className="c72-page-intro c72-width"><h1>Our people.</h1><p>Standing for Caprica.</p></section>
+    <section className="c72-portraits c72-width" aria-label="Alliance candidates">
+      {candidates.map(candidate => <Link className="c72-person" href={candidate.campaignSite ?? "/team/"} id={candidate.slug} key={candidate.name} aria-label={"Visit " + candidate.name + "’s campaign website"}>
+        <figure><img src={candidate.image} alt={candidate.name} loading="lazy" /></figure>
+        <h2>{candidate.name}</h2><p>{candidate.region.charAt(0) + candidate.region.slice(1).toLowerCase()}</p>
+      </Link>)}
+      <article className="c72-person" id="robert-bluespan">
+        <figure><img src="/images/2072/robert-bluespan.jpg" alt="Robert Bluespan" loading="lazy" width="500" height="500" /></figure>
+        <h2>Robert Bluespan</h2><p>Candidate for Ventura MP</p>
+      </article>
+    </section>
+  </CampaignShell>;
+}

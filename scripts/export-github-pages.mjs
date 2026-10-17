@@ -2,10 +2,12 @@ import { access, cp, mkdir, rm, writeFile } from "node:fs/promises";
 
 const origin = process.env.EXPORT_ORIGIN ?? "http://localhost:3000";
 const base = "/mr2068/";
-const assetVersion = "20260920c";
+const assetVersion = "20261017-2072";
 const routes = [
   { source: "2068", output: "" },
   { source: "2068", output: "2068" },
+  { source: "platform", output: "platform" },
+  { source: "manifesto", output: "manifesto" },
   { source: "platform/mission-statement", output: "platform/mission-statement" },
   { source: "platform/economy", output: "platform/economy" },
   { source: "platform/housing", output: "platform/housing" },
@@ -56,7 +58,7 @@ for (const route of exportRoutes) {
   let html = await response.text();
   const routeStyles = [...html.matchAll(/<link\b[^>]*href="(\/app\/[^"?]+\.css)(?:\?[^" ]*)?"[^>]*>/gi)]
     .map((match) => match[1])
-    .filter((file) => !file.endsWith("/globals.css") && !file.endsWith("/campaign-2068.css"));
+    .filter((file) => !file.endsWith("/globals.css") && !file.endsWith("/campaign-2068.css") && !file.endsWith("/campaign-2072.css"));
   for (const file of new Set(routeStyles)) {
     const stylesheetResponse = await fetch(`${origin}${file}`, { headers: { Accept: "text/css,*/*;q=0.1" } });
     if (!stylesheetResponse.ok) throw new Error(`Could not export ${file}: ${stylesheetResponse.status}`);
@@ -69,7 +71,7 @@ for (const route of exportRoutes) {
   html = html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<link\b[^>]*rel="modulepreload"[^>]*>/gi, "")
-    .replace(/<link\b[^>]*href="\/app\/(?:globals|campaign-2068)\.css(?:\?[^"]*)?"[^>]*>/gi, "")
+    .replace(/<link\b[^>]*href="\/app\/(?:globals|campaign-2068|campaign-2072)\.css(?:\?[^"]*)?"[^>]*>/gi, "")
     .replace("</head>", `<link rel="stylesheet" href="/assets/site.css?v=${styleVersion}"></head>`)
     .replace(/(href|src|poster)="\/(?!\/)/g, `$1="${base}`)
     .replaceAll(`href="${base}2068"`, `href="${base}"`)
@@ -79,7 +81,7 @@ for (const route of exportRoutes) {
   await writeFile(`${directory}/index.html`, html);
 }
 
-const stylesheets = await Promise.all(["globals.css", "campaign-2068.css"].map(async (file) => {
+const stylesheets = await Promise.all(["globals.css", "campaign-2068.css", "campaign-2072.css"].map(async (file) => {
   const response = await fetch(`${origin}/app/${file}`, {
     headers: { Accept: "text/css,*/*;q=0.1" },
   });
