@@ -9,6 +9,7 @@ body:has(.c72):after{display:none}
 .c72 figure{margin:0}
 .c72 h1,.c72 h2,.c72 h3,.c72 p{margin-top:0}
 .c72-width{width:min(1488px,calc(100% - 96px));margin-inline:auto}
+.c72 figure.c72-width{margin-inline:auto}
 .c72-skip{position:absolute;z-index:100;top:12px;left:24px;padding:12px 18px;background:var(--c72-paper);transform:translateY(-160%);font-size:14px}
 .c72-skip:focus{transform:none}
 
