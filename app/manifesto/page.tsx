@@ -10,7 +10,7 @@ export default function Manifesto() {
     <header className="c72-page-intro c72-width">
       <p>The manifesto / 2072 to 2076</p>
       <h1>A future you can build.</h1>
-      <a className="c72-manifesto-download" href="/manifesto/caprica-your-freedom-your-future-2072.pdf" target="_blank" rel="noreferrer"><span>Read the 2072 manifesto</span><small>PDF / 32 pages / Opens in a new tab</small></a>
+      <a className="c72-manifesto-download" href="/manifesto/caprica-your-freedom-your-future-2072.pdf" target="_blank" rel="noreferrer"><span>Read the 2072 manifesto</span></a>
     </header>
     <section className="c72-manifesto-opening c72-width" aria-label="Our case for a new mandate">
       <div><h2>A new mandate must be earned.</h2><p>In 2068, voters sent the LCA into opposition. Four years later, we are asking to return with a new programme: limits on state power, a fair chance to get ahead and a government you can trust.</p></div>
