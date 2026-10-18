@@ -4,7 +4,7 @@ import { eventCalendarHref } from "./EventActions";
 import { CampaignShell } from "../campaign-2072/CampaignChrome";
 
 export const metadata: Metadata = { title: "Events | Alliance 2072", description: "Come with a question. Meet the Alliance across Caprica in 2072." };
-const eventMonths: Record<string, string> = { AUG: "08", SEP: "09", OCT: "10" };
+const eventMonths: Record<string, string> = { AUG: "08", SEP: "09", OCT: "10", NOV: "11" };
 
 export default function Events() {
   return <CampaignShell className="c72-events">

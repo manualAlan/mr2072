@@ -5,7 +5,8 @@ import test from "node:test";
 // Verify the HTML that GitHub Pages actually serves, after npm run export:pages.
 const root = new URL("../docs/", import.meta.url);
 const topics = ["housing", "economy", "education", "healthcare", "infrastructure", "civil-liberties", "foreign-policy", "defense"];
-const routes = ["", "2068", "platform", "platform/mission-statement", ...topics.map(x => "platform/" + x), "team", "events", "manifesto"];
+const roster = [["alistair-foulke-mckeon","Alistair Foulke-McKeon"],["david-cutter","David Cutter"],["rupert-pagi-shaw","Rupert Pagi Shaw"],["darth-ron-paul","Darth Ron Paul"],["jon-fraser","Jon Fraser"],["jb-stoner","JB Stoner"],["tony-blair","Tony Blair"],["adrien-sanquier","Adrien Sanquier"],["walter-black","Walter Black"],["robert-bluespan","Robert Bluespan"],["sejin-bluespan","Sejin Bluespan"]];
+const routes = [...roster.map(([slug]) => slug), "", "2068", "platform", "platform/mission-statement", ...topics.map(x => "platform/" + x), "team", "events", "manifesto"];
 const readPage = route => readFile(new URL((route ? route + "/" : "") + "index.html", root), "utf8");
 const text = html => html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
@@ -41,15 +42,34 @@ test("the homepage stays visual, concise and free of duplicate photographs", asy
   assert.doesNotMatch(html, /<video\b|priority-tab|lca68-drawer/);
 });
 
-test("Robert appears once as the Ventura candidate without a separate website", async () => {
+test("all eleven candidates have one portrait and a working personal site", async () => {
   const html = await readPage("team");
-  const card = html.match(/<article class="c72-person" id="robert-bluespan">([\s\S]*?)<\/article>/)?.[1];
-  assert.ok(card);
-  assert.match(card, /2072\/robert-bluespan\.jpg/);
-  assert.match(card, /Candidate for Ventura MP/);
-  assert.doesNotMatch(card, /<a\b/);
-  assert.equal((html.match(/<h2>Robert Bluespan<\/h2>/g) ?? []).length, 1);
-  assert.equal((html.match(/class="c72-person"/g) ?? []).length, 10);
+  assert.equal((html.match(/class="c72-person"/g) ?? []).length, 11);
+  assert.doesNotMatch(text(html), /Pepe Marti|Roberto Libero|Mathieu Jeon|Cambria/);
+  const events = await readPage("events");
+  for (const [slug, name] of roster) {
+    const links = [...html.matchAll(/href="([^"]+)"/g)].map(match => match[1].replace(/\/$/, ""));
+    assert.ok(links.includes("/mr2068/" + slug), name + " needs a profile link");
+    assert.equal((html.split("<h2>" + name + "</h2>").length - 1), 1);
+    const profile = await readPage(slug);
+    assert.ok(profile.includes("<h1>" + name + "</h1>"));
+    const focused = ["alistair-foulke-mckeon", "darth-ron-paul", "tony-blair", "walter-black", "robert-bluespan", "sejin-bluespan"].includes(slug);
+    assert.equal((profile.match(/<figure\b/g) ?? []).length, focused ? 5 : 2);
+    assert.ok(text(profile).split(/\s+/).length < 285, name + " should stay concise");
+    const photos = [...profile.matchAll(/<img[^>]*src="([^"]+)"/g)].map(match => match[1]);
+    assert.equal(new Set(photos).size, photos.length, name + " should not repeat photos");
+    assert.doesNotMatch(text(profile), /2068|2064/);
+    const event = profile.match(/href="\/mr2068\/events\/?#([^"]+)"/)?.[1];
+    assert.ok(event && events.includes('id="' + event + '"'), name + " needs a current event");
+  }
+  assert.match(await readPage("adrien-sanquier"), /images\/mathieu\.jpg/);
+});
+
+test("retired campaign addresses forward to the current lineup", async () => {
+  for (const [slug, destination] of [["cambria","team"],["pepe-marti-rutte","team"],["mathieu-jeon","adrien-sanquier"],["roberto-libero","walter-black"]]) {
+    const html = await readPage(slug);
+    assert.ok(html.includes('content="0;url=/mr2068/' + destination + '/"'));
+  }
 });
 
 test("the letter retains its paper and the new schedule downloads 2072 dates", async () => {
@@ -60,7 +80,7 @@ test("the letter retains its paper and the new schedule downloads 2072 dates", a
   assert.match(css, /\.c72-letter\{[^}]*policy-parchment\.jpg/);
   const html = await readPage("events");
   const calendars = [...html.matchAll(/href="(data:text\/calendar;[^"]+)"/g)];
-  assert.equal(calendars.length, 8);
+  assert.equal(calendars.length, 11);
   for (const [, href] of calendars) {
     const calendar = decodeURIComponent(href.slice(href.indexOf(",") + 1));
     assert.match(calendar, /DTSTART:2072\d{4}T\d{6}/);

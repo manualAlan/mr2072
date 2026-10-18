@@ -2,7 +2,7 @@ import { access, cp, mkdir, rm, writeFile } from "node:fs/promises";
 
 const origin = process.env.EXPORT_ORIGIN ?? "http://localhost:3000";
 const base = "/mr2068/";
-const assetVersion = "20261017-2072b";
+const assetVersion = "20261017-candidates2072";
 const routes = [
   { source: "2068", output: "" },
   { source: "2068", output: "2068" },
@@ -24,16 +24,27 @@ const routes = [
   { source: "montiablo", output: "montiablo" },
   { source: "myrati", output: "myrati" },
   { source: "reno", output: "reno" },
-  { source: "cambria", output: "cambria" },
+  { source: "cambria", output: "cambria", redirect: "team" },
   { source: "alistair-foulke-mckeon", output: "alistair-foulke-mckeon" },
   { source: "david-cutter", output: "david-cutter" },
   { source: "jb-stoner", output: "jb-stoner" },
   { source: "tony-blair", output: "tony-blair" },
-  { source: "roberto-libero", output: "roberto-libero" },
+  { source: "roberto-libero", output: "roberto-libero", redirect: "walter-black" },
   { source: "jon-fraser", output: "jon-fraser" },
-  { source: "pepe-marti-rutte", output: "pepe-marti-rutte" },
+  { source: "pepe-marti-rutte", output: "pepe-marti-rutte", redirect: "team" },
   { source: "rupert-pagi-shaw", output: "rupert-pagi-shaw" },
-  { source: "mathieu-jeon", output: "mathieu-jeon" },
+  { source: "mathieu-jeon", output: "mathieu-jeon", redirect: "adrien-sanquier" },
+  { source: "darth-ron-paul", output: "darth-ron-paul" },
+  { source: "adrien-sanquier", output: "adrien-sanquier" },
+  { source: "walter-black", output: "walter-black" },
+  { source: "robert-bluespan", output: "robert-bluespan" },
+  { source: "sejin-bluespan", output: "sejin-bluespan" },
+  { source: "mezeta", output: "mezeta" },
+  { source: "ventura", output: "ventura" },
+  { source: "ambarino", output: "ambarino" },
+  { source: "pleucadeuc", output: "pleucadeuc" },
+  { source: "kalahooska", output: "kalahooska" },
+  { source: "oplana", output: "oplana" },
 ];
 const requestedRoutes = process.env.EXPORT_ROUTES?.split(",").map((route) => route.trim()).filter(Boolean);
 const exportRoutes = requestedRoutes?.length ? routes.filter((route) => requestedRoutes.includes(route.source)) : routes;
@@ -52,6 +63,12 @@ await mkdir("docs/video", { recursive: true });
 await cp("public/video/caprica-2068-city.mp4", "docs/video/caprica-2068-city.mp4");
 
 for (const route of exportRoutes) {
+  if (route.redirect) {
+    const destination = base + route.redirect + "/";
+    await mkdir("docs/" + route.output, { recursive: true });
+    await writeFile("docs/" + route.output + "/index.html", `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${destination}"><link rel="canonical" href="${destination}"><title>Alliance 2072</title></head><body><a href="${destination}">Continue to the 2072 campaign</a></body></html>`);
+    continue;
+  }
   const styleVersion = route.source === "cambria" ? `${assetVersion}-cambria` : assetVersion;
   const response = await fetch(`${origin}/${route.source}`);
   if (!response.ok) throw new Error(`Could not export /${route.source}: ${response.status}`);

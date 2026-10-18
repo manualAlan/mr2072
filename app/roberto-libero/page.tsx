@@ -1,1 +1,2 @@
-export { default, metadata } from '../reno/page';
+import { redirect } from "next/navigation";
+export default function Page() { redirect("/walter-black/"); }
