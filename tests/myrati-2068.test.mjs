@@ -16,9 +16,9 @@ test('Myrati keeps JB and MR with an inclusive 2068 platform', () => {
 test('Myrati links, event anchors and assets resolve',async()=>{
  for(const [,value] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   if(value.startsWith('#')) assert.ok(html.includes(`id="${value.slice(1)}"`),value);
-  if(!value.startsWith('/mr2068/')) continue;
+  if(!value.startsWith('/mr2072/')) continue;
   const url=new URL(value,'https://example.test');
-  let path=url.pathname.slice('/mr2068/'.length);
+  let path=url.pathname.slice('/mr2072/'.length);
   if(!path||path.endsWith('/'))path+='index.html';
   else if(!path.split('/').at(-1).includes('.'))path+='/index.html';
   const file=new URL(`../docs/${path}`,import.meta.url);

@@ -220,11 +220,11 @@ def alliance():
           "Moderate Reform, the People's Party and Avenir Caprica bring different traditions to one alliance. We share a belief in enterprise, accountable government and a future worth building here.")
     rows=[
         ('MODERATE REFORM PARTY','Alistair Foulke-McKeon','AMBROSIA','alistair.png',
-         "Clean water, local food processing and better routes to market connect Ambrosia's farms to the national growth plan. More value should stay in the communities that produce it.",'https://manualalan.github.io/mr2068/team/#alistair'),
+         "Clean water, local food processing and better routes to market connect Ambrosia's farms to the national growth plan. More value should stay in the communities that produce it.",'https://manualalan.github.io/mr2072/team/#alistair'),
         ("PEOPLE'S PARTY",'Pepe Marti Rutte','CAMBRIA','pepe.png',
-         "Practical training, room for local businesses and homes close to jobs put the freedom to get ahead within reach. Cambria's next good idea should have somewhere to grow.",'https://manualalan.github.io/mr2068/team/#pepe'),
+         "Practical training, room for local businesses and homes close to jobs put the freedom to get ahead within reach. Cambria's next good idea should have somewhere to grow.",'https://manualalan.github.io/mr2072/team/#pepe'),
         ('AVENIR CAPRICA','Mathieu Jeon','PLEUCADEUC','mathieu.jpg',
-         'The southern rail corridor, homes near stations and respect for Gallic community life connect national investment to regional opportunity. Staying close to your roots should leave your future open.','https://manualalan.github.io/mr2068/team/#mathieu'),
+         'The southern rail corridor, homes near stations and respect for Gallic community life connect national investment to regional opportunity. Staying close to your roots should leave your future open.','https://manualalan.github.io/mr2072/team/#mathieu'),
     ]
     for i,(party,name,region,im,body,url) in enumerate(rows):
         top=238+i*152
@@ -341,7 +341,7 @@ def closing():
     para(SLOGAN,M,700,CW,13.5,19,white,True,max_h=42)
     logo(W-M-54,637,54)
     para('Meet the team. Explore the campaign.',M,756,CW,9.3,13,GREEN,True)
-    c.linkURL('https://manualalan.github.io/mr2068/',(M,H-773,W-M,H-751),relative=0,thickness=0)
+    c.linkURL('https://manualalan.github.io/mr2072/',(M,H-773,W-M,H-751),relative=0,thickness=0)
     end('Liberal-Conservative Alliance',True)
 
 cover();contents();introduction();record();flagships()

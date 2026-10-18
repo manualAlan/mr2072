@@ -1994,7 +1994,7 @@ body {
   color: rgba(255,255,255,.035);
 }
 .note-card.note-lead {
-  background: linear-gradient(135deg,rgba(9,12,34,.3),rgba(15,20,70,.75)),url('/mr2068/images/rail.jpg') center/cover;
+  background: linear-gradient(135deg,rgba(9,12,34,.3),rgba(15,20,70,.75)),url('/mr2072/images/rail.jpg') center/cover;
 }
 .note-card span {
   color: var(--cyan);
@@ -3719,7 +3719,7 @@ body {
   background: linear-gradient(145deg,#082438,#03121d);
 }
 .note-card.note-lead {
-  background: linear-gradient(135deg,rgba(2,13,22,.3),rgba(5,51,65,.78)),url('/mr2068/images/rail.jpg') center/cover;
+  background: linear-gradient(135deg,rgba(2,13,22,.3),rgba(5,51,65,.78)),url('/mr2072/images/rail.jpg') center/cover;
 }
 .page-hero {
   background: radial-gradient(circle at 78% 30%,rgba(15,132,247,.82),transparent 28%),radial-gradient(circle at 20% 80%,rgba(0,191,99,.18),transparent 24%),linear-gradient(120deg,#020b12,#064b73 50%,#008e55);
@@ -5470,7 +5470,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: #020708 url('/mr2068/images/lca-hud-2068-poster.png') center/cover no-repeat;
+  background: #020708 url('/mr2072/images/lca-hud-2068-poster.png') center/cover no-repeat;
 }
 .lca68-video {
   width: 100%;
@@ -5831,7 +5831,7 @@ body {
 }
 .lca68-media {
   z-index: 0;
-  background-image: url('/mr2068/images/caprica-2068-city-poster.png');
+  background-image: url('/mr2072/images/caprica-2068-city-poster.png');
 }
 .lca68-page:after {
   z-index: 1;
@@ -6251,7 +6251,7 @@ body {
   width: min(920px,100%);
   margin: 0 auto;
   padding: clamp(54px,8vw,112px) clamp(34px,8vw,108px);
-  background: #f2ead2 url('/mr2068/images/policy-parchment.jpg') center/cover no-repeat;
+  background: #f2ead2 url('/mr2072/images/policy-parchment.jpg') center/cover no-repeat;
   color: #30291d;
   box-shadow: 0 24px 70px rgba(47,37,15,.15),0 0 0 1px rgba(80,62,25,.12);
   font-family: "Iowan Old Style",Baskerville,"Palatino Linotype",Georgia,serif;
@@ -7401,10 +7401,10 @@ body {
 }
 
 /* Alliance 2068: an editorial campaign, built around freedom and enterprise. */
-@font-face{font-family:Alliance Sans;src:url('/mr2068/fonts/montserrat-regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Alliance Sans;src:url('/mr2068/fonts/montserrat-bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:Alliance Editorial;src:url('/mr2068/fonts/bodoni-moda-medium.ttf') format('truetype');font-weight:400 700;font-style:normal;font-display:swap}
-@font-face{font-family:Alliance Editorial;src:url('/mr2068/fonts/bodoni-moda-medium-italic.ttf') format('truetype');font-weight:400 700;font-style:italic;font-display:swap}
+@font-face{font-family:Alliance Sans;src:url('/mr2072/fonts/montserrat-regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Alliance Sans;src:url('/mr2072/fonts/montserrat-bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:Alliance Editorial;src:url('/mr2072/fonts/bodoni-moda-medium.ttf') format('truetype');font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:Alliance Editorial;src:url('/mr2072/fonts/bodoni-moda-medium-italic.ttf') format('truetype');font-weight:400 700;font-style:italic;font-display:swap}
 :root{--campaign-ink:#25232d;--campaign-purple:#63339e;--campaign-lilac:#e2d6f1;--campaign-line:#d7d3dc;--campaign-serif:'Alliance Editorial',Baskerville,Georgia,serif;--campaign-sans:'Alliance Sans',Arial,sans-serif}
 body:has(.build68-home,.belief-root,.mission68-root,.events68-root,.team68-root):after{display:none}
 .build68-home,.belief-root,.mission68-root,.events68-root,.team68-root{background:#fff;color:var(--campaign-ink);font-family:var(--campaign-sans);--lca68-purple-bright:#dbb5ff}
@@ -8069,7 +8069,7 @@ a.c72-person:hover img{transform:scale(1.025)}
 .c72-letter-landscape{height:400px;overflow:hidden}
 .c72-letter-landscape img{height:100%;object-fit:cover;object-position:center 62%}
 .c72-letter-wrap{padding-block:80px 20px}
-.c72-letter{position:relative;margin:0 auto;width:min(960px,100%);padding:85px 100px 80px;background:#f2ead2 url('/mr2068/images/policy-parchment.jpg') center/cover no-repeat;color:#30291d;box-shadow:0 9px 35px #30291d14}
+.c72-letter{position:relative;margin:0 auto;width:min(960px,100%);padding:85px 100px 80px;background:#f2ead2 url('/mr2072/images/policy-parchment.jpg') center/cover no-repeat;color:#30291d;box-shadow:0 9px 35px #30291d14}
 .c72-letter:before{content:'';position:absolute;inset:16px;border:1px solid #6b583c22;pointer-events:none}
 .c72-letter-date{font:400 10px/1.5 var(--c72-mono)!important;text-align:center;letter-spacing:.12em;margin-bottom:28px!important}
 .c72-letter h2{font:400 clamp(38px,4.2vw,56px)/1.12 var(--c72-serif);text-align:center;letter-spacing:-.035em;margin:0 auto 52px}

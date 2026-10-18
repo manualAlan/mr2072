@@ -21,11 +21,11 @@ for (const route of routes) {
     assert.match(html, /<details class="c72-mobile-nav">/);
     const destinations = new Set([...html.matchAll(/href="([^"]+)"/g)].map(m => m[1].replace(/\/$/, "")));
     for (const destination of ["platform/mission-statement/", "platform/", "team/", "events/", "manifesto/"]) {
-      assert.ok(destinations.has(("/mr2068/" + destination).replace(/\/$/, "")), "Missing navigation: " + destination);
+      assert.ok(destinations.has(("/mr2072/" + destination).replace(/\/$/, "")), "Missing navigation: " + destination);
     }
-    const references = [...html.matchAll(/\b(?:href|src)="(\/mr2068\/[^"#?]*)/g)].map(m => m[1]);
+    const references = [...html.matchAll(/\b(?:href|src)="(\/mr2072\/[^"#?]*)/g)].map(m => m[1]);
     for (const href of new Set(references)) {
-      const relative = href.slice("/mr2068/".length);
+      const relative = href.slice("/mr2072/".length);
       const path = relative.endsWith("/") || !relative.split("/").at(-1).includes(".") ? relative.replace(/\/$/, "") + "/index.html" : relative;
       const info = await stat(new URL(path.replace(/^\//, ""), root)).catch(() => null);
       assert.ok(info?.isFile() && info.size, `/${route}: missing ${href}`);
@@ -49,7 +49,7 @@ test("all eleven candidates have one portrait and a working personal site", asyn
   const events = await readPage("events");
   for (const [slug, name] of roster) {
     const links = [...html.matchAll(/href="([^"]+)"/g)].map(match => match[1].replace(/\/$/, ""));
-    assert.ok(links.includes("/mr2068/" + slug), name + " needs a profile link");
+    assert.ok(links.includes("/mr2072/" + slug), name + " needs a profile link");
     assert.equal((html.split("<h2>" + name + "</h2>").length - 1), 1);
     const profile = await readPage(slug);
     assert.ok(profile.includes("<h1>" + name + "</h1>"));
@@ -59,7 +59,7 @@ test("all eleven candidates have one portrait and a working personal site", asyn
     const photos = [...profile.matchAll(/<img[^>]*src="([^"]+)"/g)].map(match => match[1]);
     assert.equal(new Set(photos).size, photos.length, name + " should not repeat photos");
     assert.doesNotMatch(text(profile), /2068|2064/);
-    const event = profile.match(/href="\/mr2068\/events\/?#([^"]+)"/)?.[1];
+    const event = profile.match(/href="\/mr2072\/events\/?#([^"]+)"/)?.[1];
     assert.ok(event && events.includes('id="' + event + '"'), name + " needs a current event");
   }
   assert.match(await readPage("adrien-sanquier"), /images\/mathieu\.jpg/);
@@ -68,7 +68,7 @@ test("all eleven candidates have one portrait and a working personal site", asyn
 test("retired campaign addresses forward to the current lineup", async () => {
   for (const [slug, destination] of [["cambria","team"],["pepe-marti-rutte","team"],["mathieu-jeon","adrien-sanquier"],["roberto-libero","walter-black"]]) {
     const html = await readPage(slug);
-    assert.ok(html.includes('content="0;url=/mr2068/' + destination + '/"'));
+    assert.ok(html.includes('content="0;url=/mr2072/' + destination + '/"'));
   }
 });
 

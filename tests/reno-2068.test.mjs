@@ -15,9 +15,9 @@ test('Reno has a distinct MR 2068 campaign and faithful candidate biography',()=
 test('Reno links and assets resolve in the published export',async()=>{
  for(const [,value] of html.matchAll(/(?:href|src)="([^"]+)"/g)){
   if(value.startsWith('#')) assert.ok(html.includes(`id="${value.slice(1)}"`),value);
-  if(!value.startsWith('/mr2068/'))continue;
+  if(!value.startsWith('/mr2072/'))continue;
   const url=new URL(value,'https://example.test');
-  let path=url.pathname.slice('/mr2068/'.length);
+  let path=url.pathname.slice('/mr2072/'.length);
   if(!path||path.endsWith('/'))path+='index.html';
   else if(!path.split('/').at(-1).includes('.'))path+='/index.html';
   const file=new URL(`../docs/${path}`,import.meta.url);
@@ -25,5 +25,5 @@ test('Reno links and assets resolve in the published export',async()=>{
   if(url.hash)assert.ok((await readFile(file,'utf8')).includes(`id="${url.hash.slice(1)}"`),value);
  }
  const team=await readFile(new URL('../docs/team/index.html',import.meta.url),'utf8');
- assert.match(team,/href="\/mr2068\/roberto-libero\/?"[^>]+id="libero"/);
+ assert.match(team,/href="\/mr2072\/roberto-libero\/?"[^>]+id="libero"/);
 });

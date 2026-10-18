@@ -32,4 +32,4 @@ The site has no registration backend. Event cards therefore provide real calenda
 
 ## Checks before publishing
 
-Run the source build. Export against a running development server. Run `node --test tests/campaign-2068.test.mjs`. Inspect desktop and narrow mobile layouts, open and close the shared drawer, follow its links, expand policy detail, and check the static export with its `/mr2068/` base path. Keep unrelated work out of the commit.
+Run the source build. Export against a running development server. Run `node --test tests/campaign-2068.test.mjs`. Inspect desktop and narrow mobile layouts, open and close the shared drawer, follow its links, expand policy detail, and check the static export with its `/mr2072/` base path. Keep unrelated work out of the commit.

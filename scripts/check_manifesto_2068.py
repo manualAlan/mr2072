@@ -50,7 +50,7 @@ for link in links:
     if '/Dest' in link:
         assert any(link['/Dest'][0] == page.indirect_reference for page in reader.pages)
     else:
-        assert link['/A']['/URI'].startswith('https://manualalan.github.io/mr2068/')
+        assert link['/A']['/URI'].startswith('https://manualalan.github.io/mr2072/')
 
 print(f'PASS: {len(reader.pages)} pages, {len(PAGES)} policy topics, '
       f'{len(layout)} text blocks without overlap, {len(photos)} unique photos, '

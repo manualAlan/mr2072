@@ -1,8 +1,8 @@
 import { access, cp, mkdir, rm, writeFile } from "node:fs/promises";
 
 const origin = process.env.EXPORT_ORIGIN ?? "http://localhost:3000";
-const base = "/mr2068/";
-const assetVersion = "20261017-candidates2072";
+const base = "/mr2072/";
+const assetVersion = "20261018-mr2072";
 const routes = [
   { source: "2068", output: "" },
   { source: "2068", output: "2068" },

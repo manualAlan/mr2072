@@ -1,7 +1,7 @@
 // Scoped export: preserve all other pages and their unpublished changes.
 import { mkdir, writeFile } from 'node:fs/promises';
 const origin = process.env.EXPORT_ORIGIN || 'http://localhost:3000';
-const base = '/mr2068/';
+const base = '/mr2072/';
 for (const route of (process.env.EXPORT_ROUTES?.split(',') || ['alistair-foulke-mckeon', 'david-cutter', 'jb-stoner', 'tony-blair', 'roberto-libero', 'jon-fraser', 'pepe-marti-rutte', 'rupert-pagi-shaw', 'mathieu-jeon', 'team', 'events'])) {
   const response = await fetch(`${origin}/${route}/`);
   if (!response.ok) throw new Error(`${route} returned ${response.status}`);

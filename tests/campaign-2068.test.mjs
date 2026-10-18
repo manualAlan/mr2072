@@ -5,7 +5,7 @@ import test from "node:test";
 // Run after npm run export:pages. These checks inspect the deliverable GitHub
 // Pages serves; they do not require a browser, a server, or the build worker.
 const docsRoot = new URL("../docs/", import.meta.url);
-const siteBase = "/mr2068/";
+const siteBase = "/mr2072/";
 const policyRoutes = [
   "platform/mission-statement",
   "platform/economy",
@@ -86,10 +86,10 @@ for (const route of routes) {
       .map(([tag]) => tag)
       .filter((tag) => attribute(tag, "rel") === "stylesheet");
     assert.equal(stylesheetTags.length, 1, "Export should use one combined stylesheet");
-    assert.match(attribute(stylesheetTags[0], "href") ?? "", /^\/mr2068\/assets\/site\.css(?:\?|$)/);
+    assert.match(attribute(stylesheetTags[0], "href") ?? "", /^\/mr2072\/assets\/site\.css(?:\?|$)/);
     const scripts = [...html.matchAll(/<script\b[^>]*>/gi)].map(([tag]) => attribute(tag, "src"));
     assert.equal(scripts.length, 1, "Development scripts should be replaced by the static client");
-    assert.match(scripts[0] ?? "", /^\/mr2068\/assets\/site\.js(?:\?|$)/);
+    assert.match(scripts[0] ?? "", /^\/mr2072\/assets\/site\.js(?:\?|$)/);
 
     const urls = new Set();
     for (const [tag] of html.matchAll(/<(?:img|script|source|video|link)\b[^>]*>/gi)) {
@@ -111,10 +111,10 @@ test("every page keeps Platform as an accessible category button with economy be
     assert.ok(trigger, `/${route}: missing Platform category button`);
     assert.equal(attribute(trigger, "aria-controls"), "lca68-platform-submenu");
     assert.equal(attribute(trigger, "aria-expanded"), "false");
-    assert.match(html, /href=["']\/mr2068\/platform\/economy\/?["']/);
+    assert.match(html, /href=["']\/mr2072\/platform\/economy\/?["']/);
     for (const [tag, body] of html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)) {
       assert.notEqual(visibleText(body), "Platform", `/${route}: Platform must not be a page link`);
-      assert.doesNotMatch(attribute(tag, "href") ?? "", /^\/mr2068\/platform\/?(?:[?#].*)?$/);
+      assert.doesNotMatch(attribute(tag, "href") ?? "", /^\/mr2072\/platform\/?(?:[?#].*)?$/);
     }
     const drawer = html.match(/<aside\b[^>]*id=["']lca68-campaign-menu["'][^>]*>/i)?.[0];
     assert.ok(drawer, `/${route}: missing shared campaign drawer`);
@@ -150,7 +150,7 @@ test("the current manifesto is exported as a real PDF", async () => {
   const pdf = await readFile(new URL("manifesto/caprica-freedom-to-build-2068.pdf", docsRoot));
   assert.equal(pdf.subarray(0, 5).toString("ascii"), "%PDF-");
   const html = await page("");
-  assert.match(html, /href=["']\/mr2068\/manifesto\/caprica-freedom-to-build-2068\.pdf["']/);
+  assert.match(html, /href=["']\/mr2072\/manifesto\/caprica-freedom-to-build-2068\.pdf["']/);
 });
 
 test("the exported client preserves keyboard focus and submenu state", async () => {

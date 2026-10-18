@@ -95,8 +95,8 @@ for (const route of ["", "2068/"]) {
       assert.match(content, /<h3>[^<]+<\/h3>/, "Each priority retains its own heading");
       const links = [...content.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map((match) => match[1]);
       assert.deepEqual(links, [
-        `/mr2068/platform/${expectedPolicies[index]}`,
-        `/mr2068/platform/${expectedRelated[index]}`,
+        `/mr2072/platform/${expectedPolicies[index]}`,
+        `/mr2072/platform/${expectedRelated[index]}`,
       ], "Both policy links must retain the GitHub Pages base path");
     });
   });

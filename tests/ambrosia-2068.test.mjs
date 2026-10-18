@@ -19,9 +19,9 @@ test('all local links and assets exist, including fragment destinations', async 
     const value = match[1];
     if (value.startsWith('#')) {
       assert.ok(html.includes(`id="${value.slice(1)}"`), value);
-    } else if (value.startsWith('/mr2068/')) {
+    } else if (value.startsWith('/mr2072/')) {
       const url = new URL(value, 'https://example.test');
-      let path = url.pathname.slice('/mr2068/'.length);
+      let path = url.pathname.slice('/mr2072/'.length);
       if (!path || path.endsWith('/')) path += 'index.html';
       else if (!path.split('/').at(-1).includes('.')) path += '/index.html';
       await access(new URL(`../docs/${path}`, import.meta.url));

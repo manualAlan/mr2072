@@ -49,7 +49,7 @@ export function eventCalendarHref(event: CalendarEvent, year = 2068) {
     `SUMMARY:${calendarText(event.title)}`,
     `LOCATION:${calendarText(event.place)}`,
     `DESCRIPTION:${calendarText(description)}`,
-    `URL:https://manualalan.github.io/mr2068/events/#${event.slug}`,
+    `URL:https://manualalan.github.io/mr2072/events/#${event.slug}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].map(foldCalendarLine).join("\r\n") + "\r\n";

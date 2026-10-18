@@ -4,7 +4,7 @@ Campaign website for the Alliance in the fictional Republic of Caprica. A single
 
 ## Live site
 
-[View the LCA campaign](https://manualalan.github.io/mr2068/)
+[View the LCA campaign](https://manualalan.github.io/mr2072/)
 
 ## Local development
 
@@ -20,6 +20,6 @@ npm run export:pages
 node --test tests/campaign-2068.test.mjs
 ```
 
-Keep the development server running on port 3000 while exporting. GitHub Pages serves `main:/docs` at `/mr2068/`.
+Keep the development server running on port 3000 while exporting. GitHub Pages serves `main:/docs` at `/mr2072/`.
 
 Campaign portraits and the Alliance logo were supplied for this project. Supporting photography and fonts are stored locally. See [CAMPAIGN_DIRECTION.md](CAMPAIGN_DIRECTION.md) for the voice, design references and asset notes. Event calendar downloads work without a backend; event registration and contact are not yet available.
