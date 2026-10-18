@@ -144,6 +144,14 @@ a.c72-person:hover img{transform:scale(1.025)}
 .c72-signature strong{font:400 25px/1.3 var(--c72-serif)}
 .c72-signature span{font:400 11px/1.6 var(--c72-mono)}
 .c72-manifesto-photo{height:540px;overflow:hidden}
+.c72-manifesto-opening{max-width:780px;padding-bottom:65px;text-align:center}
+.c72-manifesto-opening h2{font:400 32px/1.15 var(--c72-serif);letter-spacing:-.025em;margin:0 0 18px}
+.c72-manifesto-opening p{font:400 16px/1.65 var(--c72-sans);color:#4e5049;max-width:680px;margin:0 auto}
+.c72 .c72-manifesto-download{display:inline-flex;flex-direction:column;align-items:center;gap:9px;max-width:100%;margin-top:34px;padding:24px 42px;border:2px solid #215944;background:#215944;color:#fff;box-shadow:0 5px 0 #163d2e;font:700 17px/1.4 var(--c72-sans)}
+.c72-manifesto-download small{font:400 10px/1.5 var(--c72-mono);color:#e4f2ea}
+.c72 .c72-manifesto-download:hover,.c72 .c72-manifesto-download:focus-visible{background:#163d2e;border-color:#163d2e}
+.c72 .c72-manifesto-download:focus-visible{outline:3px solid var(--c72-ink);outline-offset:6px}
+@media(max-width:760px){.c72-manifesto-opening{padding-bottom:42px}.c72-manifesto-opening h2{font-size:29px}.c72-manifesto-opening p{font-size:15px}.c72 .c72-manifesto-download{width:100%;max-width:380px;padding:22px 18px;font-size:16px}}
 .c72-manifesto-photo img{height:100%;object-fit:cover;object-position:center 58%}
 .c72-manifesto-copy{display:grid;grid-template-columns:1fr 2fr;gap:8%;padding-top:90px}
 .c72-manifesto-copy>h2{font:400 clamp(32px,3.5vw,48px)/1.1 var(--c72-serif);letter-spacing:-.025em}

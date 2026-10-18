@@ -13,10 +13,10 @@ export default function MissionStatementPage() {
         <h2>A country built<br />by its people.</h2>
         <p className="c72-salutation">Fellow Capricans,</p>
         <p>I believe a good government gives people the confidence to get on with their lives. To find a home. To start something. To speak freely. To make a future that feels like their own.</p>
-        <p>That belief still guides us in 2072. The next four years should open more doors: to a first home, a skilled job, a new business and a life built here in Caprica.</p>
+        <p>In 2068, voters sent us into opposition. Four years later, we must earn a new mandate. Our programme begins with limits on state power, a fair chance at work and a government whose promises you can examine.</p>
         <p>Our place in the world gives us a remarkable opportunity. At the western edge of Columbia, facing the Twin Strait, we can be the continent’s gateway to the world. We have the people, the ingenuity and the ambition. Our size need not set our limits.</p>
         <p>I want enterprise to flourish because good ideas deserve a chance. I want excellent schools, dependable infrastructure and care people can reach because freedom needs solid foundations. And I want public finances we can trust because the next generation should inherit choices.</p>
-        <p>Government must keep the law fair, protect our liberties and be honest about its promises. Abroad, Caprica should remain open to trade, reliable with its friends and restrained in its use of force.</p>
+        <p>We will put intrusive surveillance under judges, protect voluntary workplace representation and challenge rules that keep newcomers out. We will pursue reform within the Columbian Union, with transparent commitments and steady diplomacy. And we will publish an independent opening audit before setting the next budget.</p>
         <p>We will not all imagine the same future. That is the point of a free country. The Alliance’s job is to give more people the freedom to build theirs.</p>
         <p className="c72-letter-closing">With faith in Caprica,</p>
         <div className="c72-signature"><img src="/images/robert-bluespan-signature.png" alt="Robert Bluespan signature" width="220" height="54" /><strong>Robert Bluespan</strong><span>Party Co-leader</span></div>

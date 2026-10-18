@@ -1,4 +1,4 @@
-# Alliance 2068: Freedom to build
+# Alliance 2072: Your freedom. Your future.
 
 ## The idea
 
@@ -10,7 +10,9 @@ Start with the person, then the conviction, then the policy. Prefer a home, an a
 
 Use straightforward sentences. Avoid long dashes, slogans about technology, forced wordplay and party coalition language. Keep technical commitments available in the practical sections and the manifesto, rather than making every page read like a Treasury paper.
 
-The current manifesto is the policy source of truth. Housing, care access, tax, gross and net debt measures, intelligence oversight and foreign policy have been checked against `scripts/manifesto_2068_content.py`.
+The current manifesto is the policy source of truth: `scripts/manifesto_2072_content.py`, typeset by `scripts/build_manifesto_2072.py`. The LCA entered opposition in 2068 and seeks a new mandate in 2072 for a programme through 2076. Do not present the 2068 debt outturn or proposed 2072 goals as verified current results. New fiscal commitments start from an independent opening audit. The 2068 manifesto remains an archive.
+
+CAPROC is an informal ideological label, not the name of the government's parties. Do not use CAPROC or its expanded name in the manifesto; refer to the government and its policies directly. Government intelligence and labour bill descriptions are user-supplied campaign context, not independently verified legal texts. Distinguish proposed powers from enacted provisions. The new programme responds through liberty restoration, voluntary workplace representation, pooled leave insurance, competition, public integrity and CU reform from within. It protects accrued rights and explains funding conditions; it is not a fully costed budget.
 
 ## Visual identity
 
@@ -32,4 +34,4 @@ The site has no registration backend. Event cards therefore provide real calenda
 
 ## Checks before publishing
 
-Run the source build. Export against a running development server. Run `node --test tests/campaign-2068.test.mjs`. Inspect desktop and narrow mobile layouts, open and close the shared drawer, follow its links, expand policy detail, and check the static export with its `/mr2072/` base path. Keep unrelated work out of the commit.
+Run the source build. Export against a running development server. Run `node --test tests/campaign-2072.test.mjs`. Inspect desktop and narrow mobile layouts, navigation and the manifesto download, and check the static export with its `/mr2072/` base path. For PDF changes, run `scripts/check_manifesto_2072.py` and visually inspect rendered pages. Keep unrelated work out of the commit.
